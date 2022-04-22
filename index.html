@@ -4,20 +4,29 @@
 <head>
   <meta charset="utf-8">
   <title>Volleyball.com</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css "
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
   <meta name="author" content="Edwin & Eric">
-
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
   <link rel="stylesheet" href="stylesheets/styles.css">
 </head>
 
-<body>
+<body class="container">
   <header>
-    <h1 class="page-title">Volleyball</h1>
+    <h1>Volleyball</h1>
   </header>
-
-  <script src="scripts/datastore.js" charset="utf-8"></script> 
+  <section>
+    <div class="card card-default">
+      <div class="card-body">
+        <form data-volleyball-order="form">
+          <div class="form-group">
+            <label for="vbOrder">Volleyball Equipment Order</label>
+            <input class="form-control" name="volleyball" id="volleyballOrder" autofocus>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+  <script src="scripts/datastore.js" charset="utf-8"></script>
   <script src="scripts/truck.js" charset="utf-8"></script>
   <script src="scripts/main.js" charset="utf-8"></script>
 
