@@ -5,23 +5,50 @@
     let $ = window.jQuery;
 
     function FormHandler(selector) {
-        // do stuff here
         if (!selector) {
             throw new Error('No selector provided!');
         }
-    }
 
-    // find the "selector" in DOM using jQuery and assign it to this.formElement
-    this.formElement = $(selector);
-    if (this.$formElement.length == 0); {
-        throw new error('Could not find element with selector: ' + selector);
+    // find the "selector" in the DOM using jQuery and assign it to this.formElement
+    this.$formElement = $(selector);
+    if (this.$formElement.length == 0) {
+        throw new error('Could not find Element with selector: ' + selector);
     }
+}
 
-    FormHandler.prototype.addSubmitHandler = function () {
-        console.log()
-    }
+    // Add an event handler for the Submit button and pass in createOrder as a parameter (func)
+    FormHandler.prototype.addSubmitHandler = function (func) {
+        console.log('Setting the submit handler for the form...');
+        this.$formElement.on('submit', function(event) {
+            event.preventDefault();
+
+            // copy all the info from the form fields into the variable called data
+            let data = {};
+            $(this).serializeArray().forEach(function (item) {
+                data[item.name] = item.value;
+                console.log(item.name + ' is ' + item.value);
+            });
+            console.log(data);
+            func(data); // call the function that was passed in on the data from the form
+
+            this.reset(); // reset the form
+            this.elements[0].focus(); // focus on the first field
+        });
+    };
+
+    FormHandler.prototype.addInputHandler = function (func) {
+        console.log('Setting the input handler for form');
+        this.$formElement.on('input', '[name="emailAddress"]', function (event) {
+            let emailAddress = event.target.value;
+            if (func(emailAddress) == true) { // use validation.js to check email
+                event.target.setCustomValidity('');
+            } else {
+                event.target.setCustomValidity(emailAddress + ' is not a valid email address!');
+            }
+        });
+    };
 
     App.FormHandler = FormHandler;
     window.App = App;
 
-})(window); 
+})(window);
