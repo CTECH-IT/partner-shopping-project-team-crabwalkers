@@ -16,6 +16,19 @@
         }
     }
 
+
+    // Add an event handler for the Submit Button
+    FormHandler.prototype.addSubmitHandler = function () {
+        console.log('Setting the submit handler for the form...');
+        // more stuff here soon...
+        this.$formElement.on('submit', function(event) {
+            event.preventDefault();
+
+            let data = $(this).serializeArray();
+            console.log(data);
+        });
+    }
+
     App.FormHandler = FormHandler;
     window.App = App;
 
