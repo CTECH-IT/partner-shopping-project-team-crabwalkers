@@ -25,7 +25,7 @@
 
             // copy all the info from the form fields into the variable called data
             let data = {};
-            $(this),serializeArray().forEach(function (item) {
+            $(this).serializeArray().forEach(function (item) {
                 data[item.name] = item.value;
                 console.log(item.name + ' is ' + item.value);
             });
