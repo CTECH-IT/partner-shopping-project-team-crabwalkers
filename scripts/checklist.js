@@ -8,13 +8,14 @@
         }
 
         this.$element = $(selector);
-        if (this.$element.length === 0) {
-            throw new Error('Could not find element with selector: ' + selector);
+        if (this.$element.length == 0) {
+            throw new Error('Could not find the element with selector: ' + selector);
         }
     }
 
     // The method that adds a new row to the checklist
     CheckList.prototype.addRow = function (volleyballOrder) {
+
         // Remove any existing rows that match the email Address
         this.removeRow(volleyballOrder, emailAddress);
         // Create a new instance of row, using volleyball order info
@@ -39,6 +40,23 @@
         let $label = $('<label><label>');
 
         let $checkbox = $('<input><input>', {
+
+        // Create a new instance of a row, using the coffee order info
+        var rowElement = new Row(volleyballOrder);
+        // Add the new row instance's $element prototype to the checklist
+        this.$element.append(rowElement.$element);
+    });
+
+    // Each row is one Outstanding Order
+    function Row(volleyballOrder) {
+        let $div = $('<div></div>', {
+            'data-volleyball-order': 'checkbox',
+            'class': 'checkbox'
+        });
+        let $label = $('<label></label>');
+
+        let $checkbox = $('<input></input>', {
+
             type: 'checkbox',
             value: volleyballOrder.emailAddress
         });
