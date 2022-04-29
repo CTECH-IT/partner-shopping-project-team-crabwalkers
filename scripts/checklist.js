@@ -15,12 +15,22 @@
 
     // The method that adds a new row to the checklist
     CheckList.prototype.addRow = function (volleyballOrder) {
-        // Create a new instance of a row, using the coffee order info
-        var rowElement = new Row(volleyballOrder);
         // Remove any existing rows that match the email Address
         this.removeRow(volleyballOrder, emailAddress);
+        // Create a new instance of a row, using the coffee order info
+        var rowElement = new Row(volleyballOrder);
         // Add the new row instance's $element prototype to the checklist
         this.$element.append(rowElement.$element);
+    };
+
+    // when a checkbox is clicked, get the email address from the row
+    // and then call the function (func) that is passed in with the email as a parameter
+    CheckList.prototype.addClickHandler = function (func) {
+        this.$element.on('click', 'input', function (event) {
+            var email = event.target.value;
+            this.removeRow(email);
+            func(email);
+        }.bind(this));
     };
 
     // Each row is one Outstanding Order

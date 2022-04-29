@@ -11,9 +11,9 @@
     let CheckList = App.CheckList;
 
     let myTruck = new Truck('12345', new DataStore());
-
     window.myTruck = myTruck;
 
+    // find the form that is being submitted and create a FormHandler object
     let formHandler = new FormHandler(FORM_SELECTOR);
 
     // when the submit button is called, create the order and add a checkbox
