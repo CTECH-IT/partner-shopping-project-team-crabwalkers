@@ -20,7 +20,7 @@
     // Add an event handler for the Submit Button and pass in createOrder as a parameter (func)
     FormHandler.prototype.addSubmitHandler = function (func) {
         console.log('Setting the submit handler for the form...');
-        this.$formElement.on('submit', function(event) {
+        this.$formElement.on('submit', function (event) {
             event.preventDefault();
 
             // copy all the info from the form fields into the variable called data
@@ -29,9 +29,25 @@
                 data[item.name] = item.value;
                 console.log(item.name + ' is ' + item.value);
             });
-            console.log(data); // call the function that was passed in on the data from the form
+            console.log(data);
+            func(data); // call the function that was passed in on the data from the form
+
+            this.reset(); // reset the form
+            this.element[0].focus(); // focus on the first field
         });
-    }
+    };
+
+    FormHandler.prototype.addInputHandler = function (func) {
+        console.log('Setting the input handler for form');
+        this.$formElement.on('input', '[name="emailAddress"]', function (event) {
+            let emailAddress = event.target.value;
+            if (func(emailAddress) == true) { //use validation.js to check email
+                event.target.setCustomValidity('');
+            } else {
+                event.target.setCustomValidity(emailAddress + 'is not a valid email address!');
+            }
+        });
+    };
 
     App.FormHandler = FormHandler;
     window.App = App;

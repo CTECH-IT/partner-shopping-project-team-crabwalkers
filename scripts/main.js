@@ -2,6 +2,7 @@
     'use strict';
 
     const FORM_SELECTOR ='[data-volleyball-order="form"]';
+    const CHECKLIST_SELECTOR = '[data-volleyball-order="checklist"]';
 
     // lets make sure we only have one of these
     let App = window.App;
@@ -13,7 +14,8 @@
     let myTruck = new Truck('12345', new DataStore());
     window.myTruck = myTruck;
 
-    // find the form that is being submitted and create a FormHandler object
+    let checkList = new CheckList(CHECKLIST_SELECTOR);
+
     let formHandler = new FormHandler(FORM_SELECTOR);
 
     // when the submit button is called, create the order and add a checkbox
@@ -23,3 +25,4 @@
     });
 
 })(window);
+
