@@ -14,9 +14,13 @@
     let myTruck = new Truck('12345', new DataStore());
     window.myTruck = myTruck;
 
+    // find the form that is being submitted and create a FormHandler Object
     let checkList = new CheckList(CHECKLIST_SELECTOR);
-
+    // find the checklist that is being updated and create a CheckList Object
     let formHandler = new FormHandler(FORM_SELECTOR);
+
+    // when a checkbox is clicked, call "deliverOrder" on myTruck
+    checkList.addClickHandler(myTruck.deliverOrder.bind(myTruck)); 
 
     // when the submit button is called, create the order and add a checkbox
     formHandler.addSubmitHandler(function (data) {

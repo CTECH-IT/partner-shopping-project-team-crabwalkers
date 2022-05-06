@@ -19,7 +19,7 @@
 
     // Add an event handler for the Submit Button and pass in createOrder as a parameter (func)
     FormHandler.prototype.addSubmitHandler = function (func) {
-        console.log('Setting the submit handler for the form...');
+        console.log('Setting the submit handler for the form');
         this.$formElement.on('submit', function (event) {
             event.preventDefault();
 
