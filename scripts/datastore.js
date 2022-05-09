@@ -1,9 +1,9 @@
 (function (window) {
     'use strict';
-    // amazing code will be here
 
     let App = window.App || {};
 
+    // The DataStore Constructor
     function DataStore() {
         this.data = {};
     }
@@ -20,7 +20,7 @@
         return this.data;
     };
 
-    DataStore.prototype.remove = function(key) {
+    DataStore.prototype.remove = function (key) {
         delete this.data[key]
     }
 

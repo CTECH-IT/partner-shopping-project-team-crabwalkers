@@ -29,6 +29,9 @@
                 data[item.name] = item.value;
                 console.log(item.name + ' is ' + item.value);
             });
+
+            data['mycode'] = 'vlb'; // add a special code since we're all using the same remote data store
+
             console.log(data);
             func(data); // call the function that was passed in on the data from the form
 
