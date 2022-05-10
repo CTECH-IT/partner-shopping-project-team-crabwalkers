@@ -4,8 +4,7 @@
     let App = window.App || {};   
     let Validation = {
         isCompanyEmail: function (email) {
-            return true;
-            // return /.+@isd535\.org$/.test(email);
+             return /.+@isd535\.org$/.test(email);
         }  
     };
 

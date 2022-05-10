@@ -9,13 +9,12 @@
     let Truck = App.Truck;
     let DataStore = App.DataStore;
     let RemoteDataStore = App.RemoteDataStore;
-    let FormHandler = App.FormHandler;
     let CheckList = App.CheckList;
 
     // the remote database where we store orders
     let remoteDS = new RemoteDataStore(SERVER_URL);
 
-    let myTruck = new Truck('12345', new DataStore());
+    let myTruck = new Truck('12345', remoteDS);
     window.myTruck = myTruck;
 
     // find the form that is being submitted and create a FormHandler Object
@@ -23,6 +22,7 @@
 
     // when a checkbox is clicked, call "deliverOrder" on myTruck
     checkList.addClickHandler(myTruck.deliverOrder.bind(myTruck)); 
+
     // get all the data from the remote data store and put it in the truck and on the checklist
   remoteDS.getAll(function (orders) {
 
@@ -53,8 +53,6 @@
 
 
   });
-
-
 
 
 })(window); 
