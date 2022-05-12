@@ -5,6 +5,7 @@
     let $ = window.jQuery;
 
     function FormHandler(selector) {
+
         if (!selector) {
             throw new Error('No selector provided!');
         }
@@ -26,15 +27,14 @@
             // copy all the info from the form fields into the variable called data
             let data = {};
             $(this).serializeArray().forEach(function (item) {
-                data[item.name] = item.value;
-                console.log(item.name + ' is ' + item.value);
+              data[item.name] = item.value;
+              console.log(item.name + ' is being ordered ' + item.value);
             });
 
             console.log(data);
             func(data); // call the function that was passed in on the data from the form
 
             this.reset(); // reset the form
-            this.element[0].focus(); // focus on the first field
         });
     };
 
