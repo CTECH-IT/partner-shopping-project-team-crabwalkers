@@ -27,9 +27,9 @@
      // The method that adds a new row to the checklist
      CheckList.prototype.addRow = function (volleyballOrder) {
         // Remove any existing rows that match the email Address
-        this.removeRow(volleyballOrder, emailAddress);
+        this.removeRow(volleyballOrder.emailAddress);
         // Create a new instance of a row, using the coffee order info
-        var rowElement = new Row(volleyballOrder);
+        let rowElement = new Row(volleyballOrder);
         // Add the new row instance's $element prototype to the checklist
         this.$element.append(rowElement.$element);
     };
@@ -72,5 +72,4 @@
     // Add the Checklist to the App namespace
     App.CheckList = CheckList;
     window.App = App;
-
 })(window);

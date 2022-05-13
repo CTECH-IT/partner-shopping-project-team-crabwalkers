@@ -1,29 +1,30 @@
 (function (window) {
-    'use strict';
-    
-    const CHECKLIST_SELECTOR = '[data-volleyball-order="checklist"]';
-    const SERVER_URL = 'http://saturn.rochesterschools.org:8080/json';
+  'use strict';
 
-    // lets make sure we only have one of these
-    let App = window.App;
-    let Truck = App.Truck;
-    let DataStore = App.DataStore;
-    let RemoteDataStore = App.RemoteDataStore;
-    let CheckList = App.CheckList;
+  const CHECKLIST_SELECTOR = '[data-volleyball-order="checklist"]';
+  const SERVER_URL = 'http://saturn.rochesterschools.org:8080/json';
 
-    // the remote database where we store orders
-    let remoteDS = new RemoteDataStore(SERVER_URL);
+  // lets make sure we only have one of these
+  let App = window.App;
+  let Truck = App.Truck;
+  let DataStore = App.DataStore;
+  let RemoteDataStore = App.RemoteDataStore;
+  let CheckList = App.CheckList;
 
-    let myTruck = new Truck('12345', remoteDS);
-    window.myTruck = myTruck;
+  // the remote database where we store orders
+  let remoteDS = new RemoteDataStore(SERVER_URL);
 
-    // find the form that is being submitted and create a FormHandler Object
-    let checkList = new CheckList(CHECKLIST_SELECTOR);
+  let myTruck = new Truck('12345', remoteDS);
+  window.myTruck = myTruck;
 
-    // when a checkbox is clicked, call "deliverOrder" on myTruck
-    checkList.addClickHandler(myTruck.deliverOrder.bind(myTruck)); 
+  // find the form that is being submitted and create a FormHandler Object
+  let checkList = new CheckList(CHECKLIST_SELECTOR);
 
-    // get all the data from the remote data store and put it in the truck and on the checklist
+  // when a checkbox is clicked, call "deliverOrder" on myTruck
+  checkList.addClickHandler(myTruck.deliverOrder.bind(myTruck));
+
+
+  // get all the data from the remote data store and put it in the truck and on the checklist
   remoteDS.getAll(function (orders) {
 
     // go through the orders with a loop

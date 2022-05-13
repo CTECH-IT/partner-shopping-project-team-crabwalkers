@@ -11,7 +11,6 @@
     let DataStore = App.DataStore;
     let RemoteDataStore = App.RemoteDataStore;
     let FormHandler = App.FormHandler;
-    let CheckList = App.CheckList;
     let Validation = App.Validation;
 
     // the remote database where we store orders
@@ -22,6 +21,7 @@
 
     // get all the data from the remote data store
     remoteDS.getAll(function (orders) {
+
          // go through the orders with a loop
     // figure out if this order belongs to you, 
     // if it does, create a new order and then call
