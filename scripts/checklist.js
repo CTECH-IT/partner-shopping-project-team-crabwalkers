@@ -58,7 +58,7 @@
         if (volleyballOrder.flavor) {
             description += volleyballOrder.flavor + ' ';
         }
-        description += volleyballOrder.coffee + ', ';
+        description += volleyballOrder.order + ', ';
         description += ' (' + volleyballOrder.emailAddress + ')';
         description += ' [' + volleyballOrder.strength + 'x]';
 
