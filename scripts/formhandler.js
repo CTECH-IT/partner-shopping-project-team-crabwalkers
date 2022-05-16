@@ -17,7 +17,7 @@
         }
     }
 
-    
+
     // Add an event handler for the Submit Button and pass in createOrder as a parameter (func)
     FormHandler.prototype.addSubmitHandler = function (func) {
         console.log('Setting the submit handler for the form');
@@ -27,8 +27,8 @@
             // copy all the info from the form fields into the variable called data
             let data = {};
             $(this).serializeArray().forEach(function (item) {
-              data[item.name] = item.value;
-              console.log(item.name + ' is being ordered ' + item.value);
+                data[item.name] = item.value;
+                console.log(item.name + ' is ' + item.value);
             });
 
             data['mycode'] = 'vlb'; // add a special code since we're all using the same data store
@@ -37,6 +37,7 @@
             func(data); // call the function that was passed in on the data from the form
 
             this.reset(); // reset the form
+            this.elements[0].focus(); // focus on the first field
         });
     };
 

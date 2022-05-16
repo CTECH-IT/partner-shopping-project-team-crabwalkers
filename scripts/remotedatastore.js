@@ -13,6 +13,7 @@
         // Call jQuery's $.post method to send the value to the serverUrl
         // When the server responds, call an anonymous function with serverResponse
         $.post(this.serverUrl, val, function (serverResponse) {
+            console.log(this.serverUrl);
             console.log(serverResponse);
         });
     };
@@ -22,7 +23,7 @@
         // pass in an anonymous function that calls the "cb" callback function
         $.get(this.serverUrl, function (serverResponse) {
             console.log(serverResponse);
-            cb(serverResponse)
+            cb(serverResponse);
         });
     };
 
@@ -43,5 +44,4 @@
 
     App.RemoteDataStore = RemoteDataStore;
     window.App = App;
-
 })(window);
