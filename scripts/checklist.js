@@ -2,20 +2,18 @@
     'use strict';
     let App = window.App || {};
     let $ = window.jQuery;
-
-    // the Checklist object constructor
     function CheckList(selector) {
         if (!selector) {
-            throw new Error('No selector provided');
+            throw new Error('No Selector provided');
         }
         this.$element = $(selector);
         if (this.$element.length === 0) {
-            throw new Error('Could not find the element with selector: ' + selector);
+            throw new Error('Could not find element with selector: ' + selector);
         }
     }
 
-    // when a checkbox is clicked, get the email address from the row
-    // and then call the function (func) that is passed in with the email as a parameter
+    // when the checkbox is clicked, get the email address from the row
+    // and then call the function (func) that is passed in the email as a parameter
     CheckList.prototype.addClickHandler = function (func) {
         this.$element.on('click', 'input', function (event) {
             var email = event.target.value;
@@ -23,27 +21,26 @@
             func(email);
         }.bind(this));
     };
-
-     // The method that adds a new row to the checklist
-     CheckList.prototype.addRow = function (volleyballOrder) {
-        // Remove any existing rows that match the email Address
-        this.removeRow(volleyballOrder.emailAddress);
-        // Create a new instance of a row, using the coffee order info
-        let rowElement = new Row(volleyballOrder);
-        // Add the new row instance's $element prototype to the checklist
+ 
+    // The method that adds a new row to the checklist
+    CheckList.prototype.addRow = function (volleyballOrder) {
+        // create a new instance of a row, using volleyball Order info
+        var rowElement = new Row(volleyballOrder);
+        // add the new row's instance $element property to the checklist
         this.$element.append(rowElement.$element);
     };
 
     CheckList.prototype.removeRow = function (email) {
         this.$element
-          .find('[value="' + email + '"]')
-          .closest('[data-volleyball-order="checkbox"]')
-          .remove();
+            .find('[value="' + email + '"]')
+            .closest('[data-coffee-order="checkbox"]')
+            .remove();
     };
 
-    // Each row is one Outstanding Order
+    // Each Row is one outstanding Order
     function Row(volleyballOrder) {
-        let $div = $('<div></div>', {
+        // constructor code will go here
+        let $div = $('<div><div>', {
             'data-volleyball-order': 'checkbox',
             'class': 'checkbox'
         });
@@ -54,14 +51,6 @@
             value: volleyballOrder.emailAddress
         });
 
-        let description = volleyballOrder.size + ' ';
-        if (volleyballOrder.flavor) {
-            description += volleyballOrder.flavor + ' ';
-        }
-        description += volleyballOrder.order + ', ';
-        description += ' (' + volleyballOrder.emailAddress + ')';
-        description += ' [' + volleyballOrder.strength + 'x]';
-
         $label.append($checkbox);
         $label.append(description);
         $div.append($label);
@@ -69,7 +58,7 @@
         this.$element = $div;
     }
 
-    // Add the Checklist to the App namespace
+    // Add the Checklist to namespace
     App.CheckList = CheckList;
     window.App = App;
 })(window);
