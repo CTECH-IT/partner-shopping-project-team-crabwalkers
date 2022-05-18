@@ -39,7 +39,6 @@
 
     // Each Row is one outstanding Order
     function Row(volleyballOrder) {
-        // constructor code will go here
         let $div = $('<div><div>', {
             'data-volleyball-order': 'checkbox',
             'class': 'checkbox'
@@ -50,6 +49,18 @@
             type: 'checkbox',
             value: volleyballOrder.emailAddress
         });
+
+        let description = volleyballOrder.size + ' ';
+        if (volleyballOrder.flavor) {
+            description += volleyballOrder.flavor + ' ';
+        }
+        description += volleyballOrder.coffee + ', ';
+        description += ' (' + volleyballOrder.emailAddress + ')';
+        description += ' [' + volleyballOrder.strength + 'x]';
+  
+        $label.append($checkbox);
+        $label.append(description);
+        $div.append($label);
 
         $label.append($checkbox);
         $label.append(description);
