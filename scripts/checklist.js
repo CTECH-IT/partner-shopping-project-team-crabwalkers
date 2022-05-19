@@ -51,6 +51,13 @@
             value: volleyballOrder.emailAddress
         });
 
+        let description = volleyballOrder.item + ' ';
+        if (volleyballOrder.item) {
+            description+= volleyballOrder.item + ' ';
+        }
+        description += volleyballOrder.equipment + ', ';
+        description += ' (' + volleyballOrder.emailAddress + ')';
+
         $label.append($checkbox);
         $label.append(description);
         $div.append($label);
