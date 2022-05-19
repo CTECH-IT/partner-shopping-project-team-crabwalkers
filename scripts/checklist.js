@@ -50,26 +50,12 @@
             value: volleyballOrder.emailAddress
         });
 
-<<<<<<< HEAD
         let description = volleyballOrder.item + ' ';
         if (volleyballOrder.item) {
             description+= volleyballOrder.item + ' ';
         }
         description += volleyballOrder.equipment + ', ';
         description += ' (' + volleyballOrder.emailAddress + ')';
-=======
-        let description = volleyballOrder.size + ' ';
-        if (volleyballOrder.flavor) {
-            description += volleyballOrder.flavor + ' ';
-        }
-        description += volleyballOrder.coffee + ', ';
-        description += ' (' + volleyballOrder.emailAddress + ')';
-        description += ' [' + volleyballOrder.strength + 'x]';
-  
-        $label.append($checkbox);
-        $label.append(description);
-        $div.append($label);
->>>>>>> 83efb3d84b6bedd99272cd4da0e7773676fd2ec5
 
         $label.append($checkbox);
         $label.append(description);
